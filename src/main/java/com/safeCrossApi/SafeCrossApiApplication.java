@@ -1,4 +1,4 @@
-package com.example.safe_cross_api;
+package com.safeCrossApi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package com.example.safe_cross_api;
+package com.safeCrossApi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
