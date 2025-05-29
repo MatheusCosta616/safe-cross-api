@@ -29,4 +29,22 @@ public class UserController {
         }
         return ResponseEntity.ok(responseDTO);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<UserResponseDTO> getById(@PathVariable Long id) {
+        UserResponseDTO responseDTO = userService.getById(id);
+        if (responseDTO == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(responseDTO);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<UserResponseDTO> updateUser(@PathVariable Long id, @RequestBody UserRequestDTO updateDTO) {
+        UserResponseDTO updatedUser = userService.updateUser(id, updateDTO);
+        if (updatedUser == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(updatedUser);
+    }
 }

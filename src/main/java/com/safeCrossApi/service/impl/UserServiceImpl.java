@@ -13,6 +13,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -72,6 +73,54 @@ public class UserServiceImpl implements UserService {
                 user.getEmail(),
                 user.getRegistrationDate(),
                 user.getDeviceId()
+        );
+    }
+
+    @Override
+    public UserResponseDTO getById(Long id) {
+        Optional<UserModel> userOpt = userRepository.findById(id);
+        if (userOpt.isEmpty()) {
+            return null;
+        }
+        UserModel user = userOpt.get();
+        return new UserResponseDTO(
+                user.getId(),
+                user.getName(),
+                user.getEmail(),
+                user.getRegistrationDate(),
+                user.getDeviceId()
+        );
+    }
+
+    @Override
+    public UserResponseDTO updateUser(Long id, UserRequestDTO updateDTO) {
+        Optional<UserModel> userOpt = userRepository.findById(id);
+        if (userOpt.isEmpty()) {
+            return null;
+        }
+        UserModel user = userOpt.get();
+
+        if (updateDTO.getName() != null && !updateDTO.getName().isEmpty()) {
+            user.setName(updateDTO.getName());
+        }
+        if (updateDTO.getEmail() != null && !updateDTO.getEmail().isEmpty()) {
+            user.setEmail(updateDTO.getEmail());
+        }
+        if (updateDTO.getPassword() != null && !updateDTO.getPassword().isEmpty()) {
+            user.setPasswordHash(hashPassword(updateDTO.getPassword()));
+        }
+        if (updateDTO.getDeviceId() != null && !updateDTO.getDeviceId().isEmpty()) {
+            user.setDeviceId(updateDTO.getDeviceId());
+        }
+
+        UserModel saved = userRepository.save(user);
+
+        return new UserResponseDTO(
+                saved.getId(),
+                saved.getName(),
+                saved.getEmail(),
+                saved.getRegistrationDate(),
+                saved.getDeviceId()
         );
     }
 }
