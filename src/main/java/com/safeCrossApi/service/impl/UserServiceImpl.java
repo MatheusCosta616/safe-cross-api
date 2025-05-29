@@ -1,10 +1,11 @@
 package com.safeCrossApi.service.impl;
 
 import com.safeCrossApi.dto.UserRequestDTO;
+import com.safeCrossApi.dto.UserResponseDTO;
+import com.safeCrossApi.dto.LoginRequestDTO;
 import com.safeCrossApi.model.UserModel;
 import com.safeCrossApi.repository.UserRepository;
 import com.safeCrossApi.service.UserService;
-import org.hibernate.service.spi.InjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,7 +34,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserModel registerUser(UserRequestDTO requestDTO){
+    public UserResponseDTO registerUser(UserRequestDTO requestDTO){
         UserModel user = new UserModel();
         user.setName(requestDTO.getName());
         user.setEmail(requestDTO.getEmail());
@@ -41,6 +42,36 @@ public class UserServiceImpl implements UserService {
         user.setRegistrationDate(LocalDateTime.now());
         user.setDeviceId(requestDTO.getDeviceId());
 
-        return userRepository.save(user);
+        UserModel saved = userRepository.save(user);
+
+        return new UserResponseDTO(
+                saved.getId(),
+                saved.getName(),
+                saved.getEmail(),
+                saved.getRegistrationDate(),
+                saved.getDeviceId()
+        );
+    }
+
+    @Override
+    public UserResponseDTO login(LoginRequestDTO loginRequestDTO) {
+        UserModel user = userRepository.findAll().stream()
+                .filter(u -> u.getEmail().equals(loginRequestDTO.getEmail()))
+                .findFirst()
+                .orElse(null);
+        if (user == null) {
+            return null;
+        }
+        String hashedPassword = hashPassword(loginRequestDTO.getPassword());
+        if (!user.getPasswordHash().equals(hashedPassword)) {
+            return null;
+        }
+        return new UserResponseDTO(
+                user.getId(),
+                user.getName(),
+                user.getEmail(),
+                user.getRegistrationDate(),
+                user.getDeviceId()
+        );
     }
 }

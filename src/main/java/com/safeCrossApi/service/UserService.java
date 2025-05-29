@@ -1,8 +1,10 @@
 package com.safeCrossApi.service;
 
 import com.safeCrossApi.dto.UserRequestDTO;
-import com.safeCrossApi.model.UserModel;
+import com.safeCrossApi.dto.UserResponseDTO;
+import com.safeCrossApi.dto.LoginRequestDTO;
 
 public interface UserService {
-    UserModel registerUser(UserRequestDTO requestDTO);
+    UserResponseDTO registerUser(UserRequestDTO requestDTO);
+    UserResponseDTO login(LoginRequestDTO loginRequestDTO);
 }

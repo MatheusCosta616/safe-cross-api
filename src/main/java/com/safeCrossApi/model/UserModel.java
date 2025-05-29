@@ -62,7 +62,7 @@ public class UserModel {
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
 
-    public String getPasswordHash(String s) { return passwordHash; }
+    public String getPasswordHash() { return passwordHash; }
     public void setPasswordHash(String passwordHash) { this.passwordHash = passwordHash; }
 
     public LocalDateTime getRegistrationDate() { return registrationDate; }
