@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class LogSyncServiceImpl implements LogSyncService {
@@ -39,5 +41,19 @@ public class LogSyncServiceImpl implements LogSyncService {
                 saved.getSyncDateTime(),
                 saved.getExchangedRecordsCount()
         );
+    }
+
+    @Override
+    public List<LogSyncResponseDTO> listSyncLogsForUser(Long userId) {
+        UserModel user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+        List<LogSyncModel> logs = logSyncRepository.findByUser(user);
+        return logs.stream()
+                .map(log -> new LogSyncResponseDTO(
+                        log.getId(),
+                        log.getUser().getId(),
+                        log.getSyncDateTime(),
+                        log.getExchangedRecordsCount()))
+                .collect(Collectors.toList());
     }
 }
