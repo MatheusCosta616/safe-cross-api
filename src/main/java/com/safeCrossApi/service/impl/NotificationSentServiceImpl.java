@@ -2,6 +2,8 @@ package com.safeCrossApi.service.impl;
 
 import com.safeCrossApi.dto.NotificationSentRequestDTO;
 import com.safeCrossApi.dto.NotificationSentResponseDTO;
+import com.safeCrossApi.dto.NotificationTypeRequestDTO;
+import com.safeCrossApi.dto.NotificationTypeResponseDTO;
 import com.safeCrossApi.model.NotificationSentModel;
 import com.safeCrossApi.model.NotificationTypeModel;
 import com.safeCrossApi.model.UserModel;
@@ -75,5 +77,13 @@ public class NotificationSentServiceImpl implements NotificationSentService {
                 saved.getTargetLatitude(),
                 saved.getTargetLongitude()
         );
+    }
+
+    @Override
+    public NotificationTypeResponseDTO create(NotificationTypeRequestDTO dto) {
+        NotificationTypeModel entity = new NotificationTypeModel();
+        entity.setDescription(dto.getDescription());
+        NotificationTypeModel saved = notificationTypeRepository.save(entity);
+        return new NotificationTypeResponseDTO(saved.getId(), saved.getDescription());
     }
 }

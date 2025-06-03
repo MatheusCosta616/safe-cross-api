@@ -2,6 +2,8 @@ package com.safeCrossApi.controller;
 
 import com.safeCrossApi.dto.NotificationSentRequestDTO;
 import com.safeCrossApi.dto.NotificationSentResponseDTO;
+import com.safeCrossApi.dto.NotificationTypeRequestDTO;
+import com.safeCrossApi.dto.NotificationTypeResponseDTO;
 import com.safeCrossApi.service.NotificationSentService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -20,8 +22,8 @@ public class NotificationSentController {
     private NotificationSentService notificationSentService;
 
     @Operation(summary = "Listar notificações de um usuário")
-    @GetMapping
-    public ResponseEntity<List<NotificationSentResponseDTO>> listNotifications(@RequestParam Long userId) {
+    @GetMapping("/{userId}")
+    public ResponseEntity<List<NotificationSentResponseDTO>> listNotifications(@PathVariable Long userId) {
         return ResponseEntity.ok(notificationSentService.listNotificationsForUser(userId));
     }
 
@@ -36,6 +38,15 @@ public class NotificationSentController {
     @PostMapping("/send")
     public ResponseEntity<NotificationSentResponseDTO> sendNotification(@RequestBody NotificationSentRequestDTO dto) {
         NotificationSentResponseDTO responseDTO = notificationSentService.sendNotification(dto);
+        return ResponseEntity.ok(responseDTO);
+    }
+
+    @Operation(summary = "Criar um tipo de notificação")
+    @PostMapping("/notification-type")
+    public ResponseEntity<NotificationTypeResponseDTO> create(
+            @RequestBody NotificationTypeRequestDTO dto
+    ) {
+        NotificationTypeResponseDTO responseDTO = notificationSentService.create(dto);
         return ResponseEntity.ok(responseDTO);
     }
 }
