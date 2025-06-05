@@ -43,10 +43,26 @@ public class NotificationSentController {
 
     @Operation(summary = "Criar um tipo de notificação")
     @PostMapping("/notification-type")
-    public ResponseEntity<NotificationTypeResponseDTO> create(
+    public ResponseEntity<NotificationTypeResponseDTO> createNotificationType(
             @RequestBody NotificationTypeRequestDTO dto
     ) {
         NotificationTypeResponseDTO responseDTO = notificationSentService.create(dto);
         return ResponseEntity.ok(responseDTO);
+    }
+
+    @Operation(summary = "Listar todos tipos de notificação")
+    @GetMapping
+    public ResponseEntity<List<NotificationTypeResponseDTO>> getNotificationType(){
+        return ResponseEntity.ok(notificationSentService.listAllNotificationType());
+    }
+
+    @Operation(summary = "Buscar tipo de notificação por ID")
+    @GetMapping("/{notificationId}")
+    public ResponseEntity<NotificationSentResponseDTO> getNotificationById(@PathVariable Long notificationId) {
+        NotificationSentResponseDTO notification = notificationSentService.getById(notificationId);
+        if (notification == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(notification);
     }
 }

@@ -86,4 +86,26 @@ public class NotificationSentServiceImpl implements NotificationSentService {
         NotificationTypeModel saved = notificationTypeRepository.save(entity);
         return new NotificationTypeResponseDTO(saved.getId(), saved.getDescription());
     }
+
+    @Override
+    public List<NotificationTypeResponseDTO> listAllNotificationType() {
+        return notificationTypeRepository.findAll()
+                .stream()
+                .map(type -> new NotificationTypeResponseDTO(type.getId(), type.getDescription()))
+                .toList();
+    }
+
+    @Override
+    public NotificationSentResponseDTO getById(Long id) {
+        return notificationSentRepository.findById(id)
+                .map(n -> new NotificationSentResponseDTO(
+                        n.getId(),
+                        n.getNotificationType().getId(),
+                        n.getNotificationType().getDescription(),
+                        n.getSentDateTime(),
+                        n.getTargetLatitude(),
+                        n.getTargetLongitude()
+                ))
+                .orElse(null);
+    }
 }

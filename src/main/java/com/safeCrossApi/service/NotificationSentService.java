@@ -12,4 +12,6 @@ public interface NotificationSentService {
     void deleteAllNotificationsForUser(Long userId);
     NotificationSentResponseDTO sendNotification(NotificationSentRequestDTO dto);
     NotificationTypeResponseDTO create(NotificationTypeRequestDTO dto);
+    List<NotificationTypeResponseDTO> listAllNotificationType();
+    NotificationSentResponseDTO getById(Long id);
 }
