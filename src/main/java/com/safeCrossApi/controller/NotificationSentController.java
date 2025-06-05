@@ -28,8 +28,8 @@ public class NotificationSentController {
     }
 
     @Operation(summary = "Deletar todas as notificações de um usuário")
-    @DeleteMapping
-    public ResponseEntity<Void> deleteAllNotifications(@RequestParam Long userId) {
+    @DeleteMapping("/userId")
+    public ResponseEntity<Void> deleteAllNotifications(@PathVariable Long userId) {
         notificationSentService.deleteAllNotificationsForUser(userId);
         return ResponseEntity.noContent().build();
     }
