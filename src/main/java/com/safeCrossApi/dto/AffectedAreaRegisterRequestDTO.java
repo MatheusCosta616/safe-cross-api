@@ -1,11 +1,10 @@
 package com.safeCrossApi.dto;
 
-import java.math.BigDecimal;
 
 public class AffectedAreaRegisterRequestDTO {
     private Long userId;
-    private BigDecimal latitude;
-    private BigDecimal longitude;
+    private String latitude;
+    private String longitude;
     private String description;
     private Long validationStatusId;
 
@@ -14,11 +13,11 @@ public class AffectedAreaRegisterRequestDTO {
     public Long getUserId() { return userId; }
     public void setUserId(Long userId) { this.userId = userId; }
 
-    public BigDecimal getLatitude() { return latitude; }
-    public void setLatitude(BigDecimal latitude) { this.latitude = latitude; }
+    public String getLatitude() { return latitude; }
+    public void setLatitude(String latitude) { this.latitude = latitude; }
 
-    public BigDecimal getLongitude() { return longitude; }
-    public void setLongitude(BigDecimal longitude) { this.longitude = longitude; }
+    public String getLongitude() { return longitude; }
+    public void setLongitude(String longitude) { this.longitude = longitude; }
 
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }

@@ -1,12 +1,11 @@
 package com.safeCrossApi.dto;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public class ModeledSemaphoreResponseDTO {
     private Long id;
-    private BigDecimal latitude;
-    private BigDecimal longitude;
+    private String latitude;
+    private String longitude;
     private String locationDescription;
     private Integer greenTime;
     private Integer yellowTime;
@@ -15,7 +14,7 @@ public class ModeledSemaphoreResponseDTO {
 
     public ModeledSemaphoreResponseDTO() {}
 
-    public ModeledSemaphoreResponseDTO(Long id, BigDecimal latitude, BigDecimal longitude, String locationDescription, Integer greenTime, Integer yellowTime, Integer redTime, LocalDateTime lastUpdate) {
+    public ModeledSemaphoreResponseDTO(Long id, String latitude, String longitude, String locationDescription, Integer greenTime, Integer yellowTime, Integer redTime, LocalDateTime lastUpdate) {
         this.id = id;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -26,17 +25,17 @@ public class ModeledSemaphoreResponseDTO {
         this.lastUpdate = lastUpdate;
     }
 
-    public ModeledSemaphoreResponseDTO(BigDecimal latitude, BigDecimal longitude, String locationDescription, Integer greenTime, Integer yellowTime, Integer redTime, LocalDateTime lastUpdate) {
+    public ModeledSemaphoreResponseDTO(String latitude, String longitude, String locationDescription, Integer greenTime, Integer yellowTime, Integer redTime, LocalDateTime lastUpdate) {
     }
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
-    public BigDecimal getLatitude() { return latitude; }
-    public void setLatitude(BigDecimal latitude) { this.latitude = latitude; }
+    public String getLatitude() { return latitude; }
+    public void setLatitude(String latitude) { this.latitude = latitude; }
 
-    public BigDecimal getLongitude() { return longitude; }
-    public void setLongitude(BigDecimal longitude) { this.longitude = longitude; }
+    public String getLongitude() { return longitude; }
+    public void setLongitude(String longitude) { this.longitude = longitude; }
 
     public String getLocationDescription() { return locationDescription; }
     public void setLocationDescription(String locationDescription) { this.locationDescription = locationDescription; }

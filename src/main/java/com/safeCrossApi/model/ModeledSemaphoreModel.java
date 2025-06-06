@@ -1,7 +1,6 @@
 package com.safeCrossApi.model;
 
 import jakarta.persistence.*;
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -14,10 +13,10 @@ public class ModeledSemaphoreModel {
     private Long id;
 
     @Column(name = "latitude", precision = 10, scale = 8)
-    private BigDecimal latitude;
+    private String latitude;
 
     @Column(name = "longitude", precision = 11, scale = 8)
-    private BigDecimal longitude;
+    private String longitude;
 
     @Column(name = "descricao_localizacao", length = 255)
     private String locationDescription;
@@ -42,7 +41,7 @@ public class ModeledSemaphoreModel {
 
     public ModeledSemaphoreModel() {}
 
-    public ModeledSemaphoreModel(Long id, BigDecimal latitude, BigDecimal longitude, String locationDescription, Integer greenTime, Integer yellowTime, Integer redTime, LocalDateTime lastUpdate) {
+    public ModeledSemaphoreModel(Long id, String latitude, String longitude, String locationDescription, Integer greenTime, Integer yellowTime, Integer redTime, LocalDateTime lastUpdate) {
         this.id = id;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -56,11 +55,11 @@ public class ModeledSemaphoreModel {
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
-    public BigDecimal getLatitude() { return latitude; }
-    public void setLatitude(BigDecimal latitude) { this.latitude = latitude; }
+    public String getLatitude() { return latitude; }
+    public void setLatitude(String latitude) { this.latitude = latitude; }
 
-    public BigDecimal getLongitude() { return longitude; }
-    public void setLongitude(BigDecimal longitude) { this.longitude = longitude; }
+    public String getLongitude() { return longitude; }
+    public void setLongitude(String longitude) { this.longitude = longitude; }
 
     public String getLocationDescription() { return locationDescription; }
     public void setLocationDescription(String locationDescription) { this.locationDescription = locationDescription; }

@@ -1,7 +1,6 @@
 package com.safeCrossApi.model;
 
 import jakarta.persistence.*;
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
@@ -17,10 +16,10 @@ public class AffectedAreaRegisterModel {
     private UserModel user;
 
     @Column(name = "latitude", precision = 10, scale = 8)
-    private BigDecimal latitude;
+    private String latitude;
 
     @Column(name = "longitude", precision = 11, scale = 8)
-    private BigDecimal longitude;
+    private String longitude;
 
     @Column(name = "data_hora_registro")
     private LocalDateTime registerDateTime;
@@ -34,7 +33,7 @@ public class AffectedAreaRegisterModel {
 
     public AffectedAreaRegisterModel() {}
 
-    public AffectedAreaRegisterModel(Long id, UserModel user, BigDecimal latitude, BigDecimal longitude, LocalDateTime registerDateTime, String description, ValidationStatusModel validationStatus) {
+    public AffectedAreaRegisterModel(Long id, UserModel user, String latitude, String longitude, LocalDateTime registerDateTime, String description, ValidationStatusModel validationStatus) {
         this.id = id;
         this.user = user;
         this.latitude = latitude;
@@ -50,11 +49,11 @@ public class AffectedAreaRegisterModel {
     public UserModel getUser() { return user; }
     public void setUser(UserModel user) { this.user = user; }
 
-    public BigDecimal getLatitude() { return latitude; }
-    public void setLatitude(BigDecimal latitude) { this.latitude = latitude; }
+    public String getLatitude() { return latitude; }
+    public void setLatitude(String latitude) { this.latitude = latitude; }
 
-    public BigDecimal getLongitude() { return longitude; }
-    public void setLongitude(BigDecimal longitude) { this.longitude = longitude; }
+    public String getLongitude() { return longitude; }
+    public void setLongitude(String longitude) { this.longitude = longitude; }
 
     public LocalDateTime getRegisterDateTime() { return registerDateTime; }
     public void setRegisterDateTime(LocalDateTime registerDateTime) { this.registerDateTime = registerDateTime; }

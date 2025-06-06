@@ -1,7 +1,6 @@
 package com.safeCrossApi.model;
 
 import jakarta.persistence.*;
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
@@ -24,14 +23,14 @@ public class NotificationSentModel {
     private LocalDateTime sentDateTime;
 
     @Column(name = "latitude_alvo", precision = 10, scale = 8)
-    private BigDecimal targetLatitude;
+    private String targetLatitude;
 
     @Column(name = "longitude_alvo", precision = 11, scale = 8)
-    private BigDecimal targetLongitude;
+    private String targetLongitude;
 
     public NotificationSentModel() {}
 
-    public NotificationSentModel(Long id, UserModel user, NotificationTypeModel notificationType, LocalDateTime sentDateTime, BigDecimal targetLatitude, BigDecimal targetLongitude) {
+    public NotificationSentModel(Long id, UserModel user, NotificationTypeModel notificationType, LocalDateTime sentDateTime, String targetLatitude, String targetLongitude) {
         this.id = id;
         this.user = user;
         this.notificationType = notificationType;
@@ -52,9 +51,9 @@ public class NotificationSentModel {
     public LocalDateTime getSentDateTime() { return sentDateTime; }
     public void setSentDateTime(LocalDateTime sentDateTime) { this.sentDateTime = sentDateTime; }
 
-    public BigDecimal getTargetLatitude() { return targetLatitude; }
-    public void setTargetLatitude(BigDecimal targetLatitude) { this.targetLatitude = targetLatitude; }
+    public String getTargetLatitude() { return targetLatitude; }
+    public void setTargetLatitude(String targetLatitude) { this.targetLatitude = targetLatitude; }
 
-    public BigDecimal getTargetLongitude() { return targetLongitude; }
-    public void setTargetLongitude(BigDecimal targetLongitude) { this.targetLongitude = targetLongitude; }
+    public String getTargetLongitude() { return targetLongitude; }
+    public void setTargetLongitude(String targetLongitude) { this.targetLongitude = targetLongitude; }
 }

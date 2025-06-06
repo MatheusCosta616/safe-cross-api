@@ -1,31 +1,30 @@
 package com.safeCrossApi.dto;
 
-import java.math.BigDecimal;
 
 public class ModeledSemaphoreRequestDTO {
-    private BigDecimal latitude;
-    private BigDecimal longitude;
+    private String latitude;
+    private String longitude;
 
     public ModeledSemaphoreRequestDTO() {}
 
-    public ModeledSemaphoreRequestDTO(BigDecimal latitude, BigDecimal longitude) {
+    public ModeledSemaphoreRequestDTO(String latitude, String longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
     }
 
-    public BigDecimal getLatitude() {
+    public String getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(BigDecimal latitude) {
+    public void setLatitude(String latitude) {
         this.latitude = latitude;
     }
 
-    public BigDecimal getLongitude() {
+    public String getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(BigDecimal longitude) {
+    public void setLongitude(String longitude) {
         this.longitude = longitude;
     }
 }

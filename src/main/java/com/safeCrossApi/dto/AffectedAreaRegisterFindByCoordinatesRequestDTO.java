@@ -1,16 +1,14 @@
 package com.safeCrossApi.dto;
 
-import java.math.BigDecimal;
-
 public class AffectedAreaRegisterFindByCoordinatesRequestDTO {
-    private BigDecimal latitude;
-    private BigDecimal longitude;
+    private String latitude;
+    private String longitude;
 
     public AffectedAreaRegisterFindByCoordinatesRequestDTO() {}
 
-    public BigDecimal getLatitude() { return latitude; }
-    public void setLatitude(BigDecimal latitude) { this.latitude = latitude; }
+    public String getLatitude() { return latitude; }
+    public void setLatitude(String latitude) { this.latitude = latitude; }
 
-    public BigDecimal getLongitude() { return longitude; }
-    public void setLongitude(BigDecimal longitude) { this.longitude = longitude; }
+    public String getLongitude() { return longitude; }
+    public void setLongitude(String longitude) { this.longitude = longitude; }
 }

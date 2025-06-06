@@ -57,7 +57,7 @@ public class NotificationSentController {
     }
 
     @Operation(summary = "Buscar tipo de notificação por ID")
-    @GetMapping("/{notificationId}")
+    @GetMapping("notifications-type/{notificationId}")
     public ResponseEntity<NotificationSentResponseDTO> getNotificationById(@PathVariable Long notificationId) {
         NotificationSentResponseDTO notification = notificationSentService.getById(notificationId);
         if (notification == null) {

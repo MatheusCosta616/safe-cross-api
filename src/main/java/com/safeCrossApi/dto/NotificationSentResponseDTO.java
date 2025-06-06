@@ -1,6 +1,5 @@
 package com.safeCrossApi.dto;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public class NotificationSentResponseDTO {
@@ -8,12 +7,12 @@ public class NotificationSentResponseDTO {
     private Long notificationTypeId;
     private String notificationTypeDescription;
     private LocalDateTime sentDateTime;
-    private BigDecimal targetLatitude;
-    private BigDecimal targetLongitude;
+    private String targetLatitude;
+    private String targetLongitude;
 
     public NotificationSentResponseDTO() {}
 
-    public NotificationSentResponseDTO(Long id, Long notificationTypeId, String notificationTypeDescription, LocalDateTime sentDateTime, BigDecimal targetLatitude, BigDecimal targetLongitude) {
+    public NotificationSentResponseDTO(Long id, Long notificationTypeId, String notificationTypeDescription, LocalDateTime sentDateTime, String targetLatitude, String targetLongitude) {
         this.id = id;
         this.notificationTypeId = notificationTypeId;
         this.notificationTypeDescription = notificationTypeDescription;
@@ -34,9 +33,9 @@ public class NotificationSentResponseDTO {
     public LocalDateTime getSentDateTime() { return sentDateTime; }
     public void setSentDateTime(LocalDateTime sentDateTime) { this.sentDateTime = sentDateTime; }
 
-    public BigDecimal getTargetLatitude() { return targetLatitude; }
-    public void setTargetLatitude(BigDecimal targetLatitude) { this.targetLatitude = targetLatitude; }
+    public String getTargetLatitude() { return targetLatitude; }
+    public void setTargetLatitude(String targetLatitude) { this.targetLatitude = targetLatitude; }
 
-    public BigDecimal getTargetLongitude() { return targetLongitude; }
-    public void setTargetLongitude(BigDecimal targetLongitude) { this.targetLongitude = targetLongitude; }
+    public String getTargetLongitude() { return targetLongitude; }
+    public void setTargetLongitude(String targetLongitude) { this.targetLongitude = targetLongitude; }
 }
