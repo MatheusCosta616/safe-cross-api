@@ -2,6 +2,12 @@
 
 API para gerenciamento de semáforos modelados, áreas afetadas, logs de sincronização, visualização computacional, notificações e usuários, desenvolvida para o projeto SafeCross.
 
+## Integrantes
+
+- **Caíque Walter Silva** - RM550693
+- **Guilherme Nobre Bernardo** - RM98604
+- **Matheus José de Lima Costa** - RM551157
+
 ## Requisitos
 
 - **Java 17**
@@ -42,9 +48,5 @@ ou
 http://localhost:8080/swagger-ui/index.html
 ```
 
-## Integrantes
 
-- **Caíque Walter Silva** - RM550693
-- **Guilherme Nobre Bernardo** - RM98604
-- **Matheus José de Lima Costa** - RM551157
 
